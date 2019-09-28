@@ -1,0 +1,40 @@
+#+TITLE: Functors
+#+OPTIONS: toc:0, num:nil
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@3.8.0
+#+REVEAL_THEME: moon
+
+* APIs, Interfaces
+- Talk about how much of programming is coding to an interface as a lead-in to Functor being a high-level API.
+
+* Let's Do Some Mapping!
+
+** No, not that kind of mapping!
+(show picture of a map or something equally hilarious)
+
+** Lists
+#+HEADERS: :classname MyList
+#+begin_src java :results value pp :exports both
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class MyList {
+  public static void main(String[] args) {
+    List<String> words = Arrays.asList("clojure", "haskell", "scala");
+    List<String> upperWords = new ArrayList<>();
+    for (String word : words) {
+      upperWords.add(word.toUpperCase());
+    }
+    System.out.println(upperWords);
+  }
+}
+#+end_src
+#+RESULTS:
+: [CLOJURE (\, HASKELL) (\, SCALA)]
+
+** Trees
+
+* Functor Laws
+
+* Notes
+- Sets cannot have Functor instances. Why?
