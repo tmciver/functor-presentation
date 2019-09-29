@@ -58,6 +58,30 @@ public class MyList {
 #+RESULTS:
 : [2 (\, 3) (\, 4)]
 
+** 
+#+REVEAL_HTML: <div class="column" style="float:left; width: 50%">
+
+#+begin_src java
+List<String> words = Arrays.asList("functional", "programming");
+List<String> upperWords = new ArrayList<>();
+for (String word : words) {
+  upperWords.add(word.toUpperCase());
+}
+#+end_src
+
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: <div class="column" style="float:right; width: 50%">
+
+#+begin_src java
+List<Integer> ints = Arrays.asList(1, 2, 3);
+List<Integer> newInts = new ArrayList<>();
+for (Integer i : ints) {
+  newInts.add(i + 1);
+}
+#+end_src
+
+#+REVEAL_HTML: </div>
+
 * Let's Do Some Mapping!
 ** No, not that kind of mapping!
 (show picture of a map or something equally hilarious)
