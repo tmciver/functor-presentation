@@ -6,12 +6,14 @@
 * APIs, Interfaces
 - Talk about how much of programming is coding to an interface as a lead-in to Functor being a high-level API.
 
-* Let's Do Some Mapping!
+* Iteration
 
-** No, not that kind of mapping!
-(show picture of a map or something equally hilarious)
+** One of the Most Common Operations
 
-** Lists
+** 
+
+Contrived Java example 1: uppercase a ~List~ of ~String~'s
+
 #+HEADERS: :classname MyList
 #+begin_src java :results value pp :exports both
 import java.util.List;
@@ -20,7 +22,7 @@ import java.util.Arrays;
 
 public class MyList {
   public static void main(String[] args) {
-    List<String> words = Arrays.asList("clojure", "haskell", "scala");
+    List<String> words = Arrays.asList("functional", "programming");
     List<String> upperWords = new ArrayList<>();
     for (String word : words) {
       upperWords.add(word.toUpperCase());
@@ -32,6 +34,35 @@ public class MyList {
 #+RESULTS:
 : [CLOJURE (\, HASKELL) (\, SCALA)]
 
+** 
+
+Contrived Java example 2: increment a ~List~ of ~Integer~ s:
+
+#+HEADERS: :classname MyList
+#+begin_src java :results value pp :exports both
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class MyList {
+  public static void main(String[] args) {
+    List<Integer> ints = Arrays.asList(1, 2, 3);
+    List<Integer> newInts = new ArrayList<>();
+    for (Integer i : ints) {
+      newInts.add(i + 1);
+    }
+    System.out.println(newInts);
+  }
+}
+#+end_src
+#+RESULTS:
+: [2 (\, 3) (\, 4)]
+
+* Let's Do Some Mapping!
+** No, not that kind of mapping!
+(show picture of a map or something equally hilarious)
+
+** Lists
 ** Trees
 
 * Functor Laws
