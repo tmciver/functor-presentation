@@ -12,7 +12,7 @@
 
 ** 
 Contrived PHP example 1:
-uppercase an array of strings
+Uppercase an array of strings
 
 #+begin_src php :results output pp :exports both
 function uppercaseWords(array $words) {
@@ -35,27 +35,27 @@ print_r(uppercaseWords($words));
 
 ** 
 
-Contrived Java example 2: increment a ~List~ of ~Integer~ s:
+Contrived PHP example 2:
+Increment an array of ints:
 
-#+HEADERS: :classname MyList
-#+begin_src java :results value pp :exports both
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-public class MyList {
-  public static void main(String[] args) {
-    List<Integer> ints = Arrays.asList(1, 2, 3);
-    List<Integer> newInts = new ArrayList<>();
-    for (Integer i : ints) {
-      newInts.add(i + 1);
-    }
-    System.out.println(newInts);
+#+begin_src php :results output pp :exports both
+function incrementInts(array $ints) {
+  $incd = [];
+  foreach ($ints as $i) {
+    $incd[] = $i + 1;
   }
+  return $incd;
 }
+$ints = [1, 2, 3];
+print_r(incrementInts($ints));
 #+end_src
 #+RESULTS:
-: [2 (\, 3) (\, 4)]
+: Array
+: (
+:     [0] => 2
+:     [1] => 3
+:     [2] => 4
+: )
 
 ** 
 #+REVEAL_HTML: <div class="column" style="float:left; width: 50%">
