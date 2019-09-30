@@ -1,5 +1,5 @@
 #+TITLE: Functors
-#+OPTIONS: toc:0, num:nil
+#+OPTIONS: toc:0, num:nil, \n:t
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@3.8.0
 #+REVEAL_THEME: moon
 
@@ -11,28 +11,27 @@
 ** One of the Most Common Operations
 
 ** 
+Contrived PHP example 1:
+uppercase an array of strings
 
-Contrived Java example 1: uppercase a ~List~ of ~String~'s
-
-#+HEADERS: :classname MyList
-#+begin_src java :results value pp :exports both
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-public class MyList {
-  public static void main(String[] args) {
-    List<String> words = Arrays.asList("functional", "programming");
-    List<String> upperWords = new ArrayList<>();
-    for (String word : words) {
-      upperWords.add(word.toUpperCase());
-    }
-    System.out.println(upperWords);
+#+begin_src php :results output pp :exports both
+function uppercaseWords(array $words) {
+  $uppercased = [];
+  foreach ($words as $word) {
+    $uppercased[] = strtoupper($word);
   }
+  return $uppercased;
 }
+$words = ["functional", "programming", "rocks"];
+print_r(uppercaseWords($words));
 #+end_src
 #+RESULTS:
-: [CLOJURE (\, HASKELL) (\, SCALA)]
+: Array
+: (
+:     [0] => FUNCTIONAL
+:     [1] => PROGRAMMING
+:     [2] => ROCKS
+: )
 
 ** 
 
