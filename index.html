@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Functors</title>
+<meta name="author" content="(Tim McIver)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Functors</h1><h2 class="author">Tim McIver</h2><p class="date">Created: 2019-09-30 Mon 21:48</p>
+</section>
+
+<section>
+<section id="slide-sec-">
+<h2 id="orgcaa690c">APIs, Interfaces, Abstraction</h2>
+<ul>
+<li>Talk about how much of programming is coding to an interface as a lead-in to Functor being a high-level API.<br /></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org2161d4a">Iteration Over Lists, Arrays, Vectors, etc.</h2>
+<div class="outline-text-2" id="text-org2161d4a">
+</div>
+</section>
+<section id="slide-sec-">
+<h3 id="org91cac67">One of the Most Common Operations in Programming</h3>
+
+</section>
+<section id="slide-sec-">
+<h3 id="org6f6ffbc"></h3>
+<p>
+Contrived PHP example 1:<br />
+Uppercase an array of strings<br />
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-php"><code trim><span style="color: #b4fa70;">function</span> <span style="color: #fce94f;">uppercaseWords</span>(<span style="color: #8cc4ff;">array</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">words</span>) {
+  <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">uppercased</span> = [];
+  <span style="color: #b4fa70;">foreach</span> (<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">words</span> <span style="color: #b4fa70;">as</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">word</span>) {
+    <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">uppercased</span>[] = strtoupper(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">word</span>);
+  }
+  <span style="color: #b4fa70;">return</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">uppercased</span>;
+}
+<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">words</span> = [<span style="color: #e9b96e;">"functional"</span>, <span style="color: #e9b96e;">"programming"</span>, <span style="color: #e9b96e;">"rocks"</span>];
+print_r(uppercaseWords(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">words</span>));
+</code></pre>
+</div>
+<pre class="example">
+Array
+(
+    [0] =&gt; FUNCTIONAL
+    [1] =&gt; PROGRAMMING
+    [2] =&gt; ROCKS
+)
+</pre>
+
+</section>
+<section id="slide-sec-">
+<h3 id="org5645ee8"></h3>
+<p>
+Contrived PHP example 2:<br />
+Increment an array of ints:<br />
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-php"><code trim><span style="color: #b4fa70;">function</span> <span style="color: #fce94f;">incrementInts</span>(<span style="color: #8cc4ff;">array</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">ints</span>) {
+  <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">incd</span> = [];
+  <span style="color: #b4fa70;">foreach</span> (<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">ints</span> <span style="color: #b4fa70;">as</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">i</span>) {
+    <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">incd</span>[] = <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">i</span> + 1;
+  }
+  <span style="color: #b4fa70;">return</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">incd</span>;
+}
+<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">ints</span> = [1, 2, 3];
+print_r(incrementInts(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">ints</span>));
+</code></pre>
+</div>
+<pre class="example">
+Array
+(
+    [0] =&gt; 2
+    [1] =&gt; 3
+    [2] =&gt; 4
+)
+</pre>
+
+</section>
+<section id="slide-sec-">
+<h3 id="org811b250"></h3>
+<p>
+There's a lot in common in these examples.<br />
+</p>
+<div class="column" style="float:left; width: 50%">
+
+<div class="org-src-container">
+
+<pre  class="src src-php"><code trim><span style="color: #b4fa70;">function</span> <span style="color: #fce94f;">uppercaseWords</span>(<span style="color: #8cc4ff;">array</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">words</span>) {
+  <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">uppercased</span> = [];
+  <span style="color: #b4fa70;">foreach</span> (<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">words</span> <span style="color: #b4fa70;">as</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">word</span>) {
+    <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">uppercased</span>[] = strtoupper(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">word</span>);
+  }
+  <span style="color: #b4fa70;">return</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">uppercased</span>;
+}
+</code></pre>
+</div>
+
+</div>
+<div class="column" style="float:right; width: 50%">
+
+<div class="org-src-container">
+
+<pre  class="src src-php"><code trim><span style="color: #b4fa70;">function</span> <span style="color: #fce94f;">incrementInts</span>(<span style="color: #8cc4ff;">array</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">ints</span>) {
+  <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">incd</span> = [];
+  <span style="color: #b4fa70;">foreach</span> (<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">ints</span> <span style="color: #b4fa70;">as</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">i</span>) {
+    <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">incd</span>[] = <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">i</span> + 1;
+  }
+  <span style="color: #b4fa70;">return</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">incd</span>;
+}
+</code></pre>
+</div>
+
+</div>
+
+</section>
+<section id="slide-sec-">
+<h3 id="org18b3c08"></h3>
+<p>
+Let's factor out what's common;<br />
+parameterize what's different<br />
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-php"><code trim><span style="color: #b4fa70;">function</span> <span style="color: #fce94f;">applyFunctionForEach</span>(<span style="color: #8cc4ff;">array</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">arr</span>, <span style="color: #8cc4ff;">callable</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">f</span>) {
+  <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">res</span> = [];
+  <span style="color: #b4fa70;">foreach</span> (<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">arr</span> <span style="color: #b4fa70;">as</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">i</span>) {
+    <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">res</span>[] = <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">f</span>(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">i</span>);
+  }
+  <span style="color: #b4fa70;">return</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">res</span>;
+}
+</code></pre>
+</div>
+
+</section>
+<section id="slide-sec-">
+<h3 id="org193e659"></h3>
+<p>
+Then <code>uppercaseWords</code> becomes:<br />
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-php"><code trim><span style="color: #b4fa70;">function</span> <span style="color: #fce94f;">upperCase</span>(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">s</span>) { <span style="color: #b4fa70;">return</span> strtoupper(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">s</span>); }
+<span style="color: #b4fa70;">function</span> <span style="color: #fce94f;">uppercaseWords</span>(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">words</span>) {
+  <span style="color: #b4fa70;">return</span> applyFunctionForEach(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">words</span>, <span style="color: #e9b96e;">'upperCase'</span>);
+}
+<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">words</span> = [<span style="color: #e9b96e;">"functional"</span>, <span style="color: #e9b96e;">"programming"</span>, <span style="color: #e9b96e;">"rocks"</span>];
+print_r(uppercaseWords(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">words</span>));
+</code></pre>
+</div>
+
+</section>
+<section id="slide-sec-">
+<h3 id="org9da1282"></h3>
+<p>
+and <code>incrementInts</code> becomes:<br />
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-php"><code trim><span style="color: #b4fa70;">function</span> <span style="color: #fce94f;">inc</span>(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">i</span>) { <span style="color: #b4fa70;">return</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">i</span> + 1; }
+<span style="color: #b4fa70;">function</span> <span style="color: #fce94f;">incrementInts</span>(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">ints</span>) {
+  <span style="color: #b4fa70;">return</span> applyFunctionForEach(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">ints</span>, <span style="color: #e9b96e;">'inc'</span>);
+}
+<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">ints</span> = [1, 2, 3];
+print_r(incrementInts(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">ints</span>));
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org19d5066">Let's Do Some Mapping!</h2>
+<div class="outline-text-2" id="text-org19d5066">
+</div>
+</section>
+<section id="slide-sec-">
+<h3 id="org6423db0">No, not that kind of mapping!</h3>
+<p>
+(show picture of a map or something equally hilarious)<br />
+</p>
+
+</section>
+<section id="slide-sec-">
+<h3 id="org0ea43fa">Lists</h3>
+</section>
+<section id="slide-sec-">
+<h3 id="orgea46aa5">Trees</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orga1ddb82">Functor Laws</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orgd32177a">Notes</h2>
+<ul>
+<li>Sets cannot have Functor instances. Why?<br /></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
