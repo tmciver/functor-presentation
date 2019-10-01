@@ -58,24 +58,29 @@ print_r(incrementInts($ints));
 : )
 
 ** 
+There's a lot in common in these examples.
 #+REVEAL_HTML: <div class="column" style="float:left; width: 50%">
 
-#+begin_src java
-List<String> words = Arrays.asList("functional", "programming");
-List<String> upperWords = new ArrayList<>();
-for (String word : words) {
-  upperWords.add(word.toUpperCase());
+#+begin_src php
+function uppercaseWords(array $words) {
+  $uppercased = [];
+  foreach ($words as $word) {
+    $uppercased[] = strtoupper($word);
+  }
+  return $uppercased;
 }
 #+end_src
 
 #+REVEAL_HTML: </div>
 #+REVEAL_HTML: <div class="column" style="float:right; width: 50%">
 
-#+begin_src java
-List<Integer> ints = Arrays.asList(1, 2, 3);
-List<Integer> newInts = new ArrayList<>();
-for (Integer i : ints) {
-  newInts.add(i + 1);
+#+begin_src php
+function incrementInts(array $ints) {
+  $incd = [];
+  foreach ($ints as $i) {
+    $incd[] = $i + 1;
+  }
+  return $incd;
 }
 #+end_src
 
