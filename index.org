@@ -3,12 +3,12 @@
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@3.8.0
 #+REVEAL_THEME: moon
 
-* APIs, Interfaces
+* APIs, Interfaces, Abstraction
 - Talk about how much of programming is coding to an interface as a lead-in to Functor being a high-level API.
 
-* Iteration
+* Iteration Over Lists, Arrays, Vectors, etc.
 
-** One of the Most Common Operations
+** One of the Most Common Operations in Programming
 
 ** 
 Contrived PHP example 1:
@@ -34,7 +34,6 @@ print_r(uppercaseWords($words));
 : )
 
 ** 
-
 Contrived PHP example 2:
 Increment an array of ints:
 
