@@ -122,12 +122,42 @@ print_r(incrementInts($ints));
 #+end_src
 #+RESULTS:
 
-* Let's Do Some Mapping!
-** No, not that kind of mapping!
-(show picture of a map or something equally hilarious)
+* Iteration Over Trees
 
-** Lists
-** Trees
+** A Binary Tree
+#+begin_src php :results output pp :exports both :session btree
+interface BinaryTree {}
+class Node implements BinaryTree {
+  private $left;
+  private $right;
+  private $val;
+  public function __construct($left, $right, $val) {
+    $this->left = $left;
+    $this->right = $right;
+    $this->val = $val;
+  }
+}
+class Leaf implements BinaryTree {}
+#+end_src
+
+#+RESULTS:
+
+** An Instance of a Binary Tree
+
+#+begin_src php :results output pp :exports both :session btree
+$leaf = new Leaf();
+$tree = new Node(
+  $leaf,
+  new Node(
+    $leaf,
+    $leaf,
+    1
+  ),
+  42
+);
+#+end_src
+
+#+RESULTS:
 
 * Functor Laws
 
