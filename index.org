@@ -86,6 +86,43 @@ function incrementInts(array $ints) {
 
 #+REVEAL_HTML: </div>
 
+** 
+Let's factor out what's common;
+parameterize what's different
+#+begin_src php :results output pp :exports both :session applyfunction
+function applyFunctionForEach(array $arr, callable $f) {
+  $res = [];
+  foreach ($arr as $i) {
+    $res[] = $f($i);
+  }
+  return $res;
+}
+#+end_src
+
+** 
+Then ~uppercaseWords~ becomes:
+#+begin_src php :results output pp :exports both :session applyfunction
+function upperCase($s) { return strtoupper($s); }
+function uppercaseWords($words) {
+  return applyFunctionForEach($words, 'upperCase');
+}
+$words = ["functional", "programming", "rocks"];
+print_r(uppercaseWords($words));
+#+end_src
+#+RESULTS:
+
+** 
+and ~incrementInts~ becomes:
+#+begin_src php :results output pp :exports both :session applyfunction
+function inc($i) { return $i + 1; }
+function incrementInts($ints) {
+  return applyFunctionForEach($ints, 'inc');
+}
+$ints = [1, 2, 3];
+print_r(incrementInts($ints));
+#+end_src
+#+RESULTS:
+
 * Let's Do Some Mapping!
 ** No, not that kind of mapping!
 (show picture of a map or something equally hilarious)
