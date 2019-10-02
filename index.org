@@ -243,6 +243,20 @@ function uppercaseBinaryTree($btree) {
 }
 #+end_src
 
+* Digression: The Option/Maybe Type
+
+** Null Is Terrible
+- The creator of the null reference (Tony Hoare) called it his "Billion-dollar mistake"
+- [[https://blog.overops.com/the-top-10-exceptions-types-in-production-java-applications-based-on-1b-events/][Largest source of exceptions in Java]]
+- It adds this extra value to every type but does not honor any of their contracts.
+- In C, two null values of any type compare as equal.
+
+** So What's the Alternative?
+#+ATTR_REVEAL: :frag (appear)
+An Option/Maybe Type!
+#+ATTR_REVEAL: :frag (appear)
+(Type *constructor*, actually)
+
 * Functor Laws
 
 * Notes
