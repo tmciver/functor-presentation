@@ -201,6 +201,43 @@ Then uppercasing a binary tree of strings becomes:
 $tree->uppercase();
 #+end_src
 
+** 
+But the ~uppercase~ method is very specific.  We'd like to have something that allows us to perform *any* operation on the values inside a binary tree.
+Let's do for ~BinaryTree~ what we did for PHP arrays.
+#+begin_src php :results output pp :exports both
+interface BinaryTree {
+  function applyFunctionToEachNodeValue(callable $f);
+}
+#+end_src
+
+** 
+And the implementation:
+#+begin_src php :results output pp :exports both
+class Node implements BinaryTree {
+  // boring stuff elided
+
+  public function applyFunctionToEachNodeValue(callable $f) {
+    $newLeft = $this->left->applyFunctionToEachNodeValue($f);
+    $newRight = $this->right->applyFunctionToEachNodeValue($f);
+    $newStr = $f($this->val);
+    return new Node($newLeft, $newRight, $newStr);
+  }
+}
+class Leaf implements BinaryTree {
+  public function applyFunctionToEachNodeValue(callable $f) {
+    return $this;
+  }
+}
+#+end_src
+
+** 
+And now our ~uppercaseBinaryTree~ can be written as
+#+begin_src php :results output pp :exports both
+function uppercaseBinaryTree($btree) {
+  return $btree->applyFunctionToEachNodeValue('strtoupper');
+}
+#+end_src
+
 * Functor Laws
 
 * Notes
