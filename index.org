@@ -340,6 +340,29 @@ incrementMaybeInt maybeInt = case maybeInt of
 
 #+REVEAL_HTML: </div>
 
+** Abstract Out the Common Bits
+#+begin_src haskell
+applyFunctionToMaybe maybe f = case maybe of
+  Just x -> Just (f x)
+  Nothing -> Nothing
+#+end_src
+#+ATTR_REVEAL: :frag (appear)
+#+begin_group
+What's its type?
+#+begin_src haskell
+applyFunctionToMaybe :: Maybe a -> (a -> b) -> Maybe b
+#+end_src
+#+end_group
+
+#+ATTR_REVEAL: :frag (appear)
+#+begin_group
+And now ~uppercaseMaybeString~ and ~incrementMaybeInt~ can be defined in terms of it.
+#+begin_src haskell
+uppercaseMaybeString maybe = applyFunctionToMaybe maybe toupper
+incrementMaybeInt maybe = applyFunctionToMaybe maybe (+1)
+#+end_src
+#+end_group
+
 * Functor Laws
 
 * Notes
