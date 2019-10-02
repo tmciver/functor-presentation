@@ -363,6 +363,25 @@ incrementMaybeInt maybe = applyFunctionToMaybe maybe (+1)
 #+end_src
 #+end_group
 
+* Bringing It All Together
+
+** Look at the types (In Haskell)
+#+begin_src haskell
+applyFunctionForEach         :: Array a      -> (a -> b) -> Array b      -- PHP array example
+applyFunctionToEachNodeValue :: BinaryTree a -> (a -> b) -> BinaryTree b -- PHP BinaryTree example
+applyFunctionToMaybe         :: Maybe a      -> (a -> b) -> Maybe b      -- Haskell Maybe example
+#+end_src
+
+#+ATTR_REVEAL: :frag (appear)
+In addition to using type variables Haskell allows us to use variable for *type constructors*.
+#+ATTR_REVEAL: :frag (appear)
+Here we us ~f~ to stand in for the above type constructors.
+
+#+ATTR_REVEAL: :frag (appear)
+#+begin_src haskell
+applyFunction :: f a -> (a -> b) -> f b
+#+end_src
+
 * Functor Laws
 
 * Notes
