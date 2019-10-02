@@ -318,6 +318,28 @@ incrementMaybeInt maybeInt = case maybeInt of
 incrementMaybeInt maybeInt
 #+end_src
 
+** That looked familiar . . .  again.
+#+REVEAL_HTML: <div class="column" style="float:left; width: 50%">
+
+#+begin_src haskell
+uppercaseMaybeString :: Maybe String -> Maybe String
+uppercaseMaybeString maybeString = case maybeString of
+  Just s -> Just (toUpper s)
+  Nothing -> Nothing
+#+end_src
+
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: <div class="column" style="float:right; width: 50%">
+
+#+begin_src haskell
+incrementMaybeInt :: Maybe Int -> Maybe Int
+incrementMaybeInt maybeInt = case maybeInt of
+  Just i -> Just (i + 1)
+  Nothing -> Nothing
+#+end_src
+
+#+REVEAL_HTML: </div>
+
 * Functor Laws
 
 * Notes
