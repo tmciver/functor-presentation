@@ -173,11 +173,16 @@ print_r(uppercaseBinaryTree($tree));
 #+RESULTS:
 
 ** 
-But that's not very OO-ey. Try this:
+But that's not very OO-ey. Instead let's define it as a method.
 #+begin_src php :results output pp :exports both
 interface BinaryTree {
   function uppercase();
 }
+#+end_src
+
+** 
+And implement it:
+#+begin_src php :results output pp :exports both
 class Node implements BinaryTree {
   // boring stuff elided
 
@@ -231,7 +236,7 @@ class Leaf implements BinaryTree {
 #+end_src
 
 ** 
-And now our ~uppercaseBinaryTree~ can be written as
+And now our ~uppercaseBinaryTree~ function can be written as
 #+begin_src php :results output pp :exports both
 function uppercaseBinaryTree($btree) {
   return $btree->applyFunctionToEachNodeValue('strtoupper');
