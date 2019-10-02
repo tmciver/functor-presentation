@@ -264,7 +264,7 @@ data Maybe a = Just a
              | Nothing
 #+end_src
 
-** Haskell Example 1
+** Haskell Example 1: Uppercase a String
 A variable of type ~Maybe String~:
 #+begin_src haskell :session maybe
 import Data.Maybe
@@ -290,7 +290,33 @@ uppercaseMaybeString maybeString = case maybeString of
 #+begin_src haskell :session maybe
 uppercaseMaybeString maybeAString
 #+end_src
-#+RESULTS:
+
+** Haskell Example 2: Increment an Integer
+A variable of type ~Maybe Int~:
+#+begin_src haskell :session maybe
+import Data.Maybe
+
+maybeAString :: Maybe Int
+maybeAString = Just 42
+#+end_src
+
+#+ATTR_REVEAL: :frag (appear)
+#+begin_group
+And here's a function to increment the integer in a ~Maybe Int~:
+
+#+begin_src haskell :session maybe
+incrementMaybeInt :: Maybe Int -> Maybe Int
+incrementMaybeInt maybeInt = case maybeInt of
+  Just i -> Just (i + 1)
+  Nothing -> Nothing
+#+end_src
+
+#+end_group
+
+#+ATTR_REVEAL: :frag (appear)
+#+begin_src haskell :session maybe
+incrementMaybeInt maybeInt
+#+end_src
 
 * Functor Laws
 

@@ -26,12 +26,12 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Functors</h1><h2 class="author">Tim McIver</h2><p class="date">Created: 2019-10-02 Wed 10:38</p>
+<section id="sec-title-slide"><h1 class="title">Functors</h1><h2 class="author">Tim McIver</h2><p class="date">Created: 2019-10-02 Wed 10:44</p>
 </section>
 
 <section>
 <section id="slide-sec-">
-<h2 id="org0a8fc35">APIs, Interfaces, Abstraction</h2>
+<h2 id="org19a2e34">APIs, Interfaces, Abstraction</h2>
 <ul>
 <li>Talk about how much of programming is coding to an interface as a lead-in to Functor being a high-level API.<br /></li>
 
@@ -41,16 +41,16 @@
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orga41ee87">Iteration Over Lists, Arrays, Vectors, etc.</h2>
-<div class="outline-text-2" id="text-orga41ee87">
+<h2 id="orgbddbaa3">Iteration Over Lists, Arrays, Vectors, etc.</h2>
+<div class="outline-text-2" id="text-orgbddbaa3">
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="org3d66e57">One of the Most Common Operations in Programming</h3>
+<h3 id="org372b312">One of the Most Common Operations in Programming</h3>
 
 </section>
 <section id="slide-sec-">
-<h3 id="orge0ce9d1"></h3>
+<h3 id="orgfac0dba"></h3>
 <p>
 Contrived PHP example 1:<br />
 Uppercase an array of strings<br />
@@ -80,7 +80,7 @@ Array
 
 </section>
 <section id="slide-sec-">
-<h3 id="orgc9c56f0"></h3>
+<h3 id="orgc9c0fbf"></h3>
 <p>
 Contrived PHP example 2:<br />
 Increment an array of ints:<br />
@@ -110,7 +110,7 @@ Array
 
 </section>
 <section id="slide-sec-">
-<h3 id="org3b7b6e5"></h3>
+<h3 id="orgc2b1250"></h3>
 <p>
 There's a lot in common in these examples.<br />
 </p>
@@ -147,7 +147,7 @@ There's a lot in common in these examples.<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org0425e2c"></h3>
+<h3 id="org9893cb3"></h3>
 <p>
 Let's factor out what's common;<br />
 parameterize what's different<br />
@@ -166,7 +166,7 @@ parameterize what's different<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org8ad81e0"></h3>
+<h3 id="orgb012cce"></h3>
 <p>
 Then <code>uppercaseWords</code> becomes:<br />
 </p>
@@ -183,7 +183,7 @@ print_r(uppercaseWords(<span style="color: #eeeeec; background-color: #2e3436;">
 
 </section>
 <section id="slide-sec-">
-<h3 id="orga5e00b2"></h3>
+<h3 id="orgb645407"></h3>
 <p>
 and <code>incrementInts</code> becomes:<br />
 </p>
@@ -202,12 +202,12 @@ print_r(incrementInts(<span style="color: #eeeeec; background-color: #2e3436;">$
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orge3fd13f">Iteration Over Trees</h2>
-<div class="outline-text-2" id="text-orge3fd13f">
+<h2 id="org1ec84ef">Iteration Over Trees</h2>
+<div class="outline-text-2" id="text-org1ec84ef">
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="org8d87678">A Binary Tree</h3>
+<h3 id="org8866029">A Binary Tree</h3>
 <div class="org-src-container">
 
 <pre  class="src src-php"><code trim><span style="color: #b4fa70;">interface</span> <span style="color: #8cc4ff;">BinaryTree</span> {}
@@ -228,7 +228,7 @@ print_r(incrementInts(<span style="color: #eeeeec; background-color: #2e3436;">$
 
 </section>
 <section id="slide-sec-">
-<h3 id="org5019f9b">An Instance of a Binary Tree</h3>
+<h3 id="org967461f">An Instance of a Binary Tree</h3>
 <div class="org-src-container">
 
 <pre  class="src src-php"><code trim><span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">leaf</span> = <span style="color: #b4fa70;">new</span> <span style="color: #8cc4ff;">Leaf</span>();
@@ -242,7 +242,7 @@ print_r(incrementInts(<span style="color: #eeeeec; background-color: #2e3436;">$
 
 </section>
 <section id="slide-sec-">
-<h3 id="org46d5ef4"></h3>
+<h3 id="org91eb2d3"></h3>
 <p>
 Let's try to uppercase the strings in a binary tree.<br />
 </p>
@@ -265,7 +265,7 @@ print_r(uppercaseBinaryTree(<span style="color: #eeeeec; background-color: #2e34
 
 </section>
 <section id="slide-sec-">
-<h3 id="orge508f2a"></h3>
+<h3 id="org7a612ae"></h3>
 <p>
 But that's not very OO-ey. Instead let's define it as a method.<br />
 </p>
@@ -279,7 +279,7 @@ But that's not very OO-ey. Instead let's define it as a method.<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org3065277"></h3>
+<h3 id="org3717d4d"></h3>
 <p>
 And implement it:<br />
 </p>
@@ -305,7 +305,7 @@ And implement it:<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="orgb4a9796"></h3>
+<h3 id="org0222f77"></h3>
 <p>
 Then uppercasing a binary tree of strings becomes:<br />
 </p>
@@ -317,7 +317,7 @@ Then uppercasing a binary tree of strings becomes:<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org0d8c7ee"></h3>
+<h3 id="orgc8321fb"></h3>
 <p>
 But the <code>uppercase</code> method is very specific.  We'd like to have something that allows us to perform <b>any</b> operation on the values inside a binary tree.<br />
 Let's do for <code>BinaryTree</code> what we did for PHP arrays.<br />
@@ -332,7 +332,7 @@ Let's do for <code>BinaryTree</code> what we did for PHP arrays.<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org1abb272"></h3>
+<h3 id="orgccdf97d"></h3>
 <p>
 And the implementation:<br />
 </p>
@@ -358,7 +358,7 @@ And the implementation:<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org5d2ff3d"></h3>
+<h3 id="org144f9bf"></h3>
 <p>
 And now our <code>uppercaseBinaryTree</code> function can be written as<br />
 </p>
@@ -374,12 +374,12 @@ And now our <code>uppercaseBinaryTree</code> function can be written as<br />
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orga660832">Digression: The Option/Maybe Type</h2>
-<div class="outline-text-2" id="text-orga660832">
+<h2 id="org5ccaabc">Digression: The Option/Maybe Type</h2>
+<div class="outline-text-2" id="text-org5ccaabc">
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="org9459d7c">Null Is Terrible</h3>
+<h3 id="org79c5a66">Null Is Terrible</h3>
 <ul>
 <li>The creator of the null reference (Tony Hoare) called it his "Billion-dollar mistake"<br /></li>
 <li><a href="https://blog.overops.com/the-top-10-exceptions-types-in-production-java-applications-based-on-1b-events/">Largest source of exceptions in Java</a><br /></li>
@@ -390,7 +390,7 @@ And now our <code>uppercaseBinaryTree</code> function can be written as<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org34cc7f9">So What's the Alternative?</h3>
+<h3 id="orgdb6c63c">So What's the Alternative?</h3>
 <p class="fragment (appear)">
 An Option/Maybe Type!<br />
 </p>
@@ -400,7 +400,7 @@ An Option/Maybe Type!<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org8e8dd56"></h3>
+<h3 id="org432bb94"></h3>
 <p>
 In Haskell, defined as<br />
 </p>
@@ -413,7 +413,7 @@ In Haskell, defined as<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org9d8b7e3">Haskell Example 1</h3>
+<h3 id="orgf688d08">Haskell Example 1: Uppercase a String</h3>
 <p>
 A variable of type <code>Maybe String</code>:<br />
 </p>
@@ -449,16 +449,53 @@ And here's a function to uppercase a <code>Maybe String</code>:<br />
 </div>
 
 </section>
-</section>
-<section>
 <section id="slide-sec-">
-<h2 id="org81b6488">Functor Laws</h2>
+<h3 id="org4caf671">Haskell Example 2: Increment an Integer</h3>
+<p>
+A variable of type <code>Maybe Int</code>:<br />
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-haskell"><code trim><span style="color: #b4fa70;">import</span> <span style="color: #8cc4ff;">Data.Maybe</span>
+
+<span style="color: #fce94f;">maybeAString</span> <span style="color: #fcaf3e;">::</span> <span style="color: #8cc4ff;">Maybe</span> <span style="color: #8cc4ff;">Int</span>
+<span style="color: #fce94f;">maybeAString</span> <span style="color: #fcaf3e;">=</span> <span style="color: #8cc4ff;">Just</span> 42
+</code></pre>
+</div>
+
+<div class="fragment (appear) group">
+<p>
+And here's a function to increment the integer in a <code>Maybe Int</code>:<br />
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-haskell"><code trim><span style="color: #fce94f;">incrementMaybeInt</span> <span style="color: #fcaf3e;">::</span> <span style="color: #8cc4ff;">Maybe</span> <span style="color: #8cc4ff;">Int</span> <span style="color: #fcaf3e;">-&gt;</span> <span style="color: #8cc4ff;">Maybe</span> <span style="color: #8cc4ff;">Int</span>
+<span style="color: #fce94f;">incrementMaybeInt</span> maybeInt <span style="color: #fcaf3e;">=</span> <span style="color: #b4fa70;">case</span> maybeInt <span style="color: #b4fa70;">of</span>
+  <span style="color: #8cc4ff;">Just</span> i <span style="color: #fcaf3e;">-&gt;</span> <span style="color: #8cc4ff;">Just</span> (i <span style="color: #fcaf3e;">+</span> 1)
+  <span style="color: #8cc4ff;">Nothing</span> <span style="color: #fcaf3e;">-&gt;</span> <span style="color: #8cc4ff;">Nothing</span>
+</code></pre>
+</div>
+
+</div>
+
+<div class="org-src-container">
+
+<pre  class="fragment (appear)"><code trim><span style="color: #fce94f;">incrementMaybeInt</span> maybeInt
+</code></pre>
+</div>
 
 </section>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org9dad720">Notes</h2>
+<h2 id="org1162028">Functor Laws</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="org80e0cc9">Notes</h2>
 <ul>
 <li>Sets cannot have Functor instances. Why?<br /></li>
 
