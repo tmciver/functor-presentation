@@ -26,12 +26,12 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Functors</h1><h2 class="author">Tim McIver</h2><p class="date">Created: 2019-09-30 Mon 23:48</p>
+<section id="sec-title-slide"><h1 class="title">Functors</h1><h2 class="author">Tim McIver</h2><p class="date">Created: 2019-10-01 Tue 21:49</p>
 </section>
 
 <section>
 <section id="slide-sec-">
-<h2 id="org8c3259e">APIs, Interfaces, Abstraction</h2>
+<h2 id="org53e9a2b">APIs, Interfaces, Abstraction</h2>
 <ul>
 <li>Talk about how much of programming is coding to an interface as a lead-in to Functor being a high-level API.<br /></li>
 
@@ -41,16 +41,16 @@
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orga7d91fe">Iteration Over Lists, Arrays, Vectors, etc.</h2>
-<div class="outline-text-2" id="text-orga7d91fe">
+<h2 id="org032f8b0">Iteration Over Lists, Arrays, Vectors, etc.</h2>
+<div class="outline-text-2" id="text-org032f8b0">
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="org6dd9d48">One of the Most Common Operations in Programming</h3>
+<h3 id="org7752816">One of the Most Common Operations in Programming</h3>
 
 </section>
 <section id="slide-sec-">
-<h3 id="orgb9ed747"></h3>
+<h3 id="org252b743"></h3>
 <p>
 Contrived PHP example 1:<br />
 Uppercase an array of strings<br />
@@ -80,7 +80,7 @@ Array
 
 </section>
 <section id="slide-sec-">
-<h3 id="org714507c"></h3>
+<h3 id="orgd89aee5"></h3>
 <p>
 Contrived PHP example 2:<br />
 Increment an array of ints:<br />
@@ -110,7 +110,7 @@ Array
 
 </section>
 <section id="slide-sec-">
-<h3 id="orgf77b14a"></h3>
+<h3 id="org49fa7b3"></h3>
 <p>
 There's a lot in common in these examples.<br />
 </p>
@@ -147,7 +147,7 @@ There's a lot in common in these examples.<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="orge4430b4"></h3>
+<h3 id="org7444521"></h3>
 <p>
 Let's factor out what's common;<br />
 parameterize what's different<br />
@@ -166,7 +166,7 @@ parameterize what's different<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org5234b2b"></h3>
+<h3 id="orge2204a9"></h3>
 <p>
 Then <code>uppercaseWords</code> becomes:<br />
 </p>
@@ -183,7 +183,7 @@ print_r(uppercaseWords(<span style="color: #eeeeec; background-color: #2e3436;">
 
 </section>
 <section id="slide-sec-">
-<h3 id="orgeddb1f0"></h3>
+<h3 id="orgd22594a"></h3>
 <p>
 and <code>incrementInts</code> becomes:<br />
 </p>
@@ -202,12 +202,12 @@ print_r(incrementInts(<span style="color: #eeeeec; background-color: #2e3436;">$
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org74af089">Iteration Over Trees</h2>
-<div class="outline-text-2" id="text-org74af089">
+<h2 id="org8ff3bc1">Iteration Over Trees</h2>
+<div class="outline-text-2" id="text-org8ff3bc1">
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="orgeaaacb1">A Binary Tree</h3>
+<h3 id="org16d366b">A Binary Tree</h3>
 <div class="org-src-container">
 
 <pre  class="src src-php"><code trim><span style="color: #b4fa70;">interface</span> <span style="color: #8cc4ff;">BinaryTree</span> {}
@@ -220,6 +220,7 @@ print_r(incrementInts(<span style="color: #eeeeec; background-color: #2e3436;">$
     <span style="color: #e9b2e3;">$</span><span style="color: #e9b2e3;">this</span><span style="color: #eeeeec; background-color: #2e3436;">-&gt;</span><span style="color: #fcaf3e;">right</span> = <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">right</span>;
     <span style="color: #e9b2e3;">$</span><span style="color: #e9b2e3;">this</span><span style="color: #eeeeec; background-color: #2e3436;">-&gt;</span><span style="color: #fcaf3e;">val</span> = <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">val</span>;
   }
+  <span style="color: #73d216;">// </span><span style="color: #73d216;">getters elided</span>
 }
 <span style="color: #b4fa70;">class</span> <span style="color: #8cc4ff;">Leaf</span> <span style="color: #b4fa70;">implements</span> <span style="color: #8cc4ff;">BinaryTree</span> {}
 </code></pre>
@@ -227,19 +228,79 @@ print_r(incrementInts(<span style="color: #eeeeec; background-color: #2e3436;">$
 
 </section>
 <section id="slide-sec-">
-<h3 id="org2893d6f">An Instance of a Binary Tree</h3>
+<h3 id="org287c2c3">An Instance of a Binary Tree</h3>
 <div class="org-src-container">
 
 <pre  class="src src-php"><code trim><span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">leaf</span> = <span style="color: #b4fa70;">new</span> <span style="color: #8cc4ff;">Leaf</span>();
 <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">tree</span> = <span style="color: #b4fa70;">new</span> <span style="color: #8cc4ff;">Node</span>(
-  <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">leaf</span>,
-  <span style="color: #b4fa70;">new</span> <span style="color: #8cc4ff;">Node</span>(
-    <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">leaf</span>,
-    <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">leaf</span>,
-    1
-  ),
-  42
+  <span style="color: #b4fa70;">new</span> <span style="color: #8cc4ff;">Node</span>(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">leaf</span>, <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">leaf</span>, <span style="color: #e9b96e;">"functional"</span>),
+  <span style="color: #b4fa70;">new</span> <span style="color: #8cc4ff;">Node</span>(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">leaf</span>, <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">leaf</span>, <span style="color: #e9b96e;">"rocks"</span>),
+  <span style="color: #e9b96e;">"programming"</span>
 );
+</code></pre>
+</div>
+
+</section>
+<section id="slide-sec-">
+<h3 id="orgcdecbd1"></h3>
+<p>
+Let's try to uppercase the strings in a binary tree.<br />
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-php"><code trim><span style="color: #b4fa70;">function</span> <span style="color: #fce94f;">uppercaseBinaryTree</span>(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">btree</span>) {
+  <span style="color: #b4fa70;">if</span> (<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">btree</span> <span style="color: #b4fa70;">instanceof</span> <span style="color: #8cc4ff;">Node</span>) {
+    <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">newLeft</span> = uppercaseBinaryTree(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">btree</span><span style="color: #eeeeec; background-color: #2e3436;">-&gt;</span><span style="color: #eeeeec; background-color: #2e3436;">getLeftNode</span>());
+    <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">newRight</span> = uppercaseBinaryTree(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">btree</span><span style="color: #eeeeec; background-color: #2e3436;">-&gt;</span><span style="color: #eeeeec; background-color: #2e3436;">getRightNode</span>());
+    <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">newStr</span> = strtoupper(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">btree</span><span style="color: #eeeeec; background-color: #2e3436;">-&gt;</span><span style="color: #eeeeec; background-color: #2e3436;">getVal</span>());
+    <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">newNode</span> = <span style="color: #b4fa70;">new</span> <span style="color: #8cc4ff;">Node</span>(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">newLeft</span>, <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">newRight</span>, <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">newStr</span>);
+  } <span style="color: #b4fa70;">else</span> {
+    <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">newNode</span> = <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">btree</span>;
+  }
+  <span style="color: #b4fa70;">return</span> <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">newNode</span>;
+}
+print_r(uppercaseBinaryTree(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">tree</span>));
+</code></pre>
+</div>
+
+</section>
+<section id="slide-sec-">
+<h3 id="orgbeae512"></h3>
+<p>
+But that's not very OO-ey. Try this:<br />
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-php"><code trim><span style="color: #b4fa70;">interface</span> <span style="color: #8cc4ff;">BinaryTree</span> {
+  <span style="color: #b4fa70;">function</span> <span style="color: #fce94f;">uppercase</span>();
+}
+<span style="color: #b4fa70;">class</span> <span style="color: #8cc4ff;">Node</span> <span style="color: #b4fa70;">implements</span> <span style="color: #8cc4ff;">BinaryTree</span> {
+  <span style="color: #73d216;">// </span><span style="color: #73d216;">boring stuff elided</span>
+
+  <span style="color: #b4fa70;">public</span> <span style="color: #b4fa70;">function</span> <span style="color: #fce94f;">uppercase</span>() {
+    <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">newLeft</span> = <span style="color: #e9b2e3;">$</span><span style="color: #e9b2e3;">this</span><span style="color: #eeeeec; background-color: #2e3436;">-&gt;</span><span style="color: #fcaf3e;">left</span><span style="color: #eeeeec; background-color: #2e3436;">-&gt;</span><span style="color: #eeeeec; background-color: #2e3436;">uppercase</span>();
+    <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">newRight</span> = <span style="color: #e9b2e3;">$</span><span style="color: #e9b2e3;">this</span><span style="color: #eeeeec; background-color: #2e3436;">-&gt;</span><span style="color: #fcaf3e;">right</span><span style="color: #eeeeec; background-color: #2e3436;">-&gt;</span><span style="color: #eeeeec; background-color: #2e3436;">uppercase</span>();
+    <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">newStr</span> = strtoupper(<span style="color: #e9b2e3;">$</span><span style="color: #e9b2e3;">this</span><span style="color: #eeeeec; background-color: #2e3436;">-&gt;</span><span style="color: #fcaf3e;">val</span>);
+    <span style="color: #b4fa70;">return</span> <span style="color: #b4fa70;">new</span> <span style="color: #8cc4ff;">Node</span>(<span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">newLeft</span>, <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">newRight</span>, <span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">newStr</span>);
+  }
+}
+<span style="color: #b4fa70;">class</span> <span style="color: #8cc4ff;">Leaf</span> <span style="color: #b4fa70;">implements</span> <span style="color: #8cc4ff;">BinaryTree</span> {
+  <span style="color: #b4fa70;">public</span> <span style="color: #b4fa70;">function</span> <span style="color: #fce94f;">uppercase</span>() {
+    <span style="color: #b4fa70;">return</span> <span style="color: #e9b2e3;">$</span><span style="color: #e9b2e3;">this</span>;
+  }
+}
+</code></pre>
+</div>
+
+</section>
+<section id="slide-sec-">
+<h3 id="org467fb69"></h3>
+<p>
+Then uppercasing a binary tree of strings becomes:<br />
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-php"><code trim><span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">tree</span><span style="color: #eeeeec; background-color: #2e3436;">-&gt;</span><span style="color: #eeeeec; background-color: #2e3436;">uppercase</span>();
 </code></pre>
 </div>
 
@@ -247,13 +308,13 @@ print_r(incrementInts(<span style="color: #eeeeec; background-color: #2e3436;">$
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org3317509">Functor Laws</h2>
+<h2 id="orgd9ed344">Functor Laws</h2>
 
 </section>
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org07ee137">Notes</h2>
+<h2 id="orgb5865e6">Notes</h2>
 <ul>
 <li>Sets cannot have Functor instances. Why?<br /></li>
 

@@ -136,10 +136,10 @@ class Node implements BinaryTree {
     $this->right = $right;
     $this->val = $val;
   }
+  // getters elided
 }
 class Leaf implements BinaryTree {}
 #+end_src
-
 #+RESULTS:
 
 ** An Instance of a Binary Tree
@@ -147,17 +147,59 @@ class Leaf implements BinaryTree {}
 #+begin_src php :results output pp :exports both :session btree
 $leaf = new Leaf();
 $tree = new Node(
-  $leaf,
-  new Node(
-    $leaf,
-    $leaf,
-    1
-  ),
-  42
+  new Node($leaf, $leaf, "functional"),
+  new Node($leaf, $leaf, "rocks"),
+  "programming"
 );
 #+end_src
-
 #+RESULTS:
+
+** 
+Let's try to uppercase the strings in a binary tree.
+#+begin_src php :results output pp :exports both :session btree
+function uppercaseBinaryTree($btree) {
+  if ($btree instanceof Node) {
+    $newLeft = uppercaseBinaryTree($btree->getLeftNode());
+    $newRight = uppercaseBinaryTree($btree->getRightNode());
+    $newStr = strtoupper($btree->getVal());
+    $newNode = new Node($newLeft, $newRight, $newStr);
+  } else {
+    $newNode = $btree;
+  }
+  return $newNode;
+}
+print_r(uppercaseBinaryTree($tree));
+#+end_src
+#+RESULTS:
+
+** 
+But that's not very OO-ey. Try this:
+#+begin_src php :results output pp :exports both
+interface BinaryTree {
+  function uppercase();
+}
+class Node implements BinaryTree {
+  // boring stuff elided
+
+  public function uppercase() {
+    $newLeft = $this->left->uppercase();
+    $newRight = $this->right->uppercase();
+    $newStr = strtoupper($this->val);
+    return new Node($newLeft, $newRight, $newStr);
+  }
+}
+class Leaf implements BinaryTree {
+  public function uppercase() {
+    return $this;
+  }
+}
+#+end_src
+
+** 
+Then uppercasing a binary tree of strings becomes:
+#+begin_src php :results output pp :exports both
+$tree->uppercase();
+#+end_src
 
 * Functor Laws
 
