@@ -257,6 +257,41 @@ An Option/Maybe Type!
 #+ATTR_REVEAL: :frag (appear)
 (Type *constructor*, actually)
 
+** 
+In Haskell, defined as
+#+begin_src haskell :results output pp :exports both
+data Maybe a = Just a
+             | Nothing
+#+end_src
+
+** Haskell Example 1
+A variable of type ~Maybe String~:
+#+begin_src haskell :session maybe
+import Data.Maybe
+
+maybeAString :: Maybe String
+maybeAString = Just "Portland FP Meetup"
+#+end_src
+
+#+ATTR_REVEAL: :frag (appear)
+#+begin_group
+And here's a function to uppercase a ~Maybe String~:
+
+#+begin_src haskell :session maybe
+uppercaseMaybeString :: Maybe String -> Maybe String
+uppercaseMaybeString maybeString = case maybeString of
+  Just s -> Just (toUpper s)
+  Nothing -> Nothing
+#+end_src
+
+#+end_group
+
+#+ATTR_REVEAL: :frag (appear)
+#+begin_src haskell :session maybe
+uppercaseMaybeString maybeAString
+#+end_src
+#+RESULTS:
+
 * Functor Laws
 
 * Notes
