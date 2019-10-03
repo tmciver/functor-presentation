@@ -432,6 +432,3 @@ fmap (f . g) = fmap f . fmap g
 it should not matter whether we map a composed function or first map one function and then the other
 -- [[https://en.wikibooks.org/wiki/Haskell/The_Functor_class#The_functor_laws][Wikibooks]]
 #+end_quote
-
-* Notes
-- Sets cannot have Functor instances. Why?
