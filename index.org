@@ -404,5 +404,34 @@ instance Functor Maybe where
 
 * Functor Laws
 
+** 
+Not just any type class instance will suffice!
+#+ATTR_REVEAL: :frag (appear)
+Many type class instances must follow certain laws.
+#+ATTR_REVEAL: :frag (appear)
+For example, ~Functor~ instances must satisfy two laws.
+
+** Functor Law 1: Identity Preservation
+#+ATTR_REVEAL: :frag (appear)
+#+begin_src haskell
+fmap id = id
+#+end_src
+#+ATTR_REVEAL: :frag (appear)
+#+begin_quote
+mapping id over a functorial value must return the functorial value unchanged.
+-- [[https://en.wikibooks.org/wiki/Haskell/The_Functor_class#The_functor_laws][Wikibooks]]
+#+end_quote
+
+** Functor Law 2: Composition Preservation
+#+ATTR_REVEAL: :frag (appear)
+#+begin_src haskell
+fmap (f . g) = fmap f . fmap g
+#+end_src
+#+ATTR_REVEAL: :frag (appear)
+#+begin_quote
+it should not matter whether we map a composed function or first map one function and then the other
+-- [[https://en.wikibooks.org/wiki/Haskell/The_Functor_class#The_functor_laws][Wikibooks]]
+#+end_quote
+
 * Notes
 - Sets cannot have Functor instances. Why?
