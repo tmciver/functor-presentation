@@ -486,3 +486,5 @@ And second:
 Using the type class system, we can write fmap-based algorithms which work out of the box with any functor - be it [], Maybe, Tree or whichever you need. Indeed, a number of useful classes in the core libraries inherit from Functor.
 -- [[https://en.wikibooks.org/wiki/Haskell/The_Functor_class#What_did_we_gain?][Wikibooks]]
 #+end_quote
+
+* Thank You

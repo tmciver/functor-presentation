@@ -31,12 +31,12 @@
 
 <section>
 <section id="slide-sec-">
-<h2 id="orgd0e6004">Introduction to Type Classes</h2>
-<div class="outline-text-2" id="text-orgd0e6004">
+<h2 id="orga33669c">Introduction to Type Classes</h2>
+<div class="outline-text-2" id="text-orga33669c">
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="orge47d373">What's a Type Class?</h3>
+<h3 id="orgfa0b4f8">What's a Type Class?</h3>
 <ul>
 <li class="fragment appear">It's similar to an interface in OO languages - except better!<br /></li>
 <li class="fragment appear">They allow a way of implementing ad-hoc polymorphism (i.e., function overloading)<br /></li>
@@ -47,7 +47,7 @@
 
 </section>
 <section id="slide-sec-">
-<h3 id="org21f8cd6">Example: Show</h3>
+<h3 id="orgf5ac871">Example: Show</h3>
 <p>
 The <code>Show</code> type class in Haskell is defined like so:<br />
 </p>
@@ -87,7 +87,7 @@ We might create an instance of the <code>Show</code> type class like so:<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="orgdb83d90"></h3>
+<h3 id="orga893bfe"></h3>
 <p>
 Some things to note here:<br />
 </p>
@@ -101,16 +101,16 @@ Some things to note here:<br />
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org79054c5">Iteration Over Lists, Arrays, Vectors, etc.</h2>
-<div class="outline-text-2" id="text-org79054c5">
+<h2 id="org051a2db">Iteration Over Lists, Arrays, Vectors, etc.</h2>
+<div class="outline-text-2" id="text-org051a2db">
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="org4225b98">One of the Most Common Operations in Programming</h3>
+<h3 id="org47e2a1c">One of the Most Common Operations in Programming</h3>
 
 </section>
 <section id="slide-sec-">
-<h3 id="orge154838"></h3>
+<h3 id="org298922c"></h3>
 <p>
 Contrived PHP example 1:<br />
 Uppercase an array of strings<br />
@@ -140,7 +140,7 @@ Array
 
 </section>
 <section id="slide-sec-">
-<h3 id="org17ea75b"></h3>
+<h3 id="orga490a61"></h3>
 <p>
 Contrived PHP example 2:<br />
 Increment an array of ints:<br />
@@ -170,7 +170,7 @@ Array
 
 </section>
 <section id="slide-sec-">
-<h3 id="org49f919d"></h3>
+<h3 id="org96ba3d3"></h3>
 <p>
 There's a lot in common in these examples.<br />
 </p>
@@ -207,7 +207,7 @@ There's a lot in common in these examples.<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="orgb9b3ba4"></h3>
+<h3 id="org374a12f"></h3>
 <p>
 Let's factor out what's common;<br />
 parameterize what's different<br />
@@ -226,7 +226,7 @@ parameterize what's different<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org25d3f43"></h3>
+<h3 id="orgd2591a2"></h3>
 <p>
 Then <code>uppercaseWords</code> becomes:<br />
 </p>
@@ -243,7 +243,7 @@ print_r(uppercaseWords(<span style="color: #eeeeec; background-color: #2e3436;">
 
 </section>
 <section id="slide-sec-">
-<h3 id="orgb6e9b84"></h3>
+<h3 id="orgc7fd8f1"></h3>
 <p>
 and <code>incrementInts</code> becomes:<br />
 </p>
@@ -262,12 +262,12 @@ print_r(incrementInts(<span style="color: #eeeeec; background-color: #2e3436;">$
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orgd1574c0">Iteration Over Trees</h2>
-<div class="outline-text-2" id="text-orgd1574c0">
+<h2 id="org0e7dd7a">Iteration Over Trees</h2>
+<div class="outline-text-2" id="text-org0e7dd7a">
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="org67c2bca">A Binary Tree</h3>
+<h3 id="orge69f76b">A Binary Tree</h3>
 <div class="org-src-container">
 
 <pre  class="src src-php"><code trim><span style="color: #b4fa70;">interface</span> <span style="color: #8cc4ff;">BinaryTree</span> {}
@@ -288,7 +288,7 @@ print_r(incrementInts(<span style="color: #eeeeec; background-color: #2e3436;">$
 
 </section>
 <section id="slide-sec-">
-<h3 id="org52523ba">An Instance of a Binary Tree</h3>
+<h3 id="org599a746">An Instance of a Binary Tree</h3>
 <div class="org-src-container">
 
 <pre  class="src src-php"><code trim><span style="color: #eeeeec; background-color: #2e3436;">$</span><span style="color: #fcaf3e;">leaf</span> = <span style="color: #b4fa70;">new</span> <span style="color: #8cc4ff;">Leaf</span>();
@@ -302,7 +302,7 @@ print_r(incrementInts(<span style="color: #eeeeec; background-color: #2e3436;">$
 
 </section>
 <section id="slide-sec-">
-<h3 id="org315436e"></h3>
+<h3 id="org58078bb"></h3>
 <p>
 Let's try to uppercase the strings in a binary tree.<br />
 </p>
@@ -325,7 +325,7 @@ print_r(uppercaseBinaryTree(<span style="color: #eeeeec; background-color: #2e34
 
 </section>
 <section id="slide-sec-">
-<h3 id="orgab4fecc"></h3>
+<h3 id="org654257e"></h3>
 <p>
 But that's not very OO-ey. Instead let's define it as a method.<br />
 </p>
@@ -339,7 +339,7 @@ But that's not very OO-ey. Instead let's define it as a method.<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="orgb465832"></h3>
+<h3 id="org9c18db9"></h3>
 <p>
 And implement it:<br />
 </p>
@@ -365,7 +365,7 @@ And implement it:<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="orga46f9d1"></h3>
+<h3 id="org822d649"></h3>
 <p>
 Then uppercasing a binary tree of strings becomes:<br />
 </p>
@@ -377,7 +377,7 @@ Then uppercasing a binary tree of strings becomes:<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="orgfe9fa08"></h3>
+<h3 id="org2cc32b8"></h3>
 <p>
 But the <code>uppercase</code> method is very specific.  We'd like to have something that allows us to perform <b>any</b> operation on the values inside a binary tree.<br />
 Let's do for <code>BinaryTree</code> what we did for PHP arrays.<br />
@@ -392,7 +392,7 @@ Let's do for <code>BinaryTree</code> what we did for PHP arrays.<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="orgf8196bd"></h3>
+<h3 id="org6b8ab8a"></h3>
 <p>
 And the implementation:<br />
 </p>
@@ -418,7 +418,7 @@ And the implementation:<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org5cee87d"></h3>
+<h3 id="orgda6dff9"></h3>
 <p>
 And now our <code>uppercaseBinaryTree</code> function can be written as<br />
 </p>
@@ -434,12 +434,12 @@ And now our <code>uppercaseBinaryTree</code> function can be written as<br />
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="orgced7ddc">Digression: The Option/Maybe Type</h2>
-<div class="outline-text-2" id="text-orgced7ddc">
+<h2 id="orgc327ee4">Digression: The Option/Maybe Type</h2>
+<div class="outline-text-2" id="text-orgc327ee4">
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="orge5dcbc5">Null Is Terrible</h3>
+<h3 id="org54a7180">Null Is Terrible</h3>
 <ul>
 <li>The creator of the null reference (Tony Hoare) called it his "Billion-dollar mistake"<br /></li>
 <li><a href="https://blog.overops.com/the-top-10-exceptions-types-in-production-java-applications-based-on-1b-events/">Largest source of exceptions in Java</a><br /></li>
@@ -450,7 +450,7 @@ And now our <code>uppercaseBinaryTree</code> function can be written as<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org2b67c18">So What's the Alternative?</h3>
+<h3 id="orge099142">So What's the Alternative?</h3>
 <p class="fragment (appear)">
 An Option/Maybe Type!<br />
 </p>
@@ -460,7 +460,7 @@ An Option/Maybe Type!<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org30ab15e"></h3>
+<h3 id="orgc1f3a50"></h3>
 <p>
 In Haskell, defined as<br />
 </p>
@@ -473,7 +473,7 @@ In Haskell, defined as<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org4ed02b2">Haskell Example 1: Uppercase a String</h3>
+<h3 id="org9770f18">Haskell Example 1: Uppercase a String</h3>
 <p>
 A variable of type <code>Maybe String</code>:<br />
 </p>
@@ -510,7 +510,7 @@ And here's a function to uppercase a <code>Maybe String</code>:<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org564d076">Haskell Example 2: Increment an Integer</h3>
+<h3 id="org6227ef8">Haskell Example 2: Increment an Integer</h3>
 <p>
 A variable of type <code>Maybe Int</code>:<br />
 </p>
@@ -547,7 +547,7 @@ And here's a function to increment the integer in a <code>Maybe Int</code>:<br /
 
 </section>
 <section id="slide-sec-">
-<h3 id="orgbca3d4e">That looked familiar . . .  again.</h3>
+<h3 id="orgbc01de3">That looked familiar . . .  again.</h3>
 <div class="column" style="float:left; width: 50%">
 
 <div class="org-src-container">
@@ -575,7 +575,7 @@ And here's a function to increment the integer in a <code>Maybe Int</code>:<br /
 
 </section>
 <section id="slide-sec-">
-<h3 id="orgb69544c">Abstract Out the Common Bits</h3>
+<h3 id="org9af824f">Abstract Out the Common Bits</h3>
 <div class="org-src-container">
 
 <pre  class="src src-haskell"><code trim><span style="color: #fce94f;">applyFunctionToMaybe</span> maybe f <span style="color: #fcaf3e;">=</span> <span style="color: #b4fa70;">case</span> maybe <span style="color: #b4fa70;">of</span>
@@ -612,12 +612,12 @@ And now <code>uppercaseMaybeString</code> and <code>incrementMaybeInt</code> can
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org2867ae4">Bringing It All Together</h2>
-<div class="outline-text-2" id="text-org2867ae4">
+<h2 id="orgb5259f2">Bringing It All Together</h2>
+<div class="outline-text-2" id="text-orgb5259f2">
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="org7c9c65d">Look at the types (In Haskell)</h3>
+<h3 id="org7570452">Look at the types (In Haskell)</h3>
 <div class="org-src-container">
 
 <pre  class="src src-haskell"><code trim><span style="color: #fce94f;">applyFunctionForEach</span>         <span style="color: #fcaf3e;">::</span> <span style="color: #8cc4ff;">Array</span> a      <span style="color: #fcaf3e;">-&gt;</span> (a <span style="color: #fcaf3e;">-&gt;</span> b) <span style="color: #fcaf3e;">-&gt;</span> <span style="color: #8cc4ff;">Array</span> b      <span style="color: #73d216;">-- </span><span style="color: #73d216;">PHP array example</span>
@@ -641,7 +641,7 @@ Here we us <code>f</code> to stand in for the above type constructors.<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org0014e93"></h3>
+<h3 id="orgfa7c93e"></h3>
 <p>
 In Haskell this function is called <code>fmap</code> and is embodied by the <code>Functor</code> type class.<br />
 </p>
@@ -654,7 +654,7 @@ In Haskell this function is called <code>fmap</code> and is embodied by the <cod
 
 </section>
 <section id="slide-sec-">
-<h3 id="orgf45c166"></h3>
+<h3 id="org626e2d4"></h3>
 <p>
 In Haskell data types are said to <b>have</b> instances of a given type class.<br />
 </p>
@@ -676,12 +676,12 @@ For example, here's the <code>Functor</code> instance for <code>Maybe</code>:<br
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org3c0ea7d">Functor Laws</h2>
-<div class="outline-text-2" id="text-org3c0ea7d">
+<h2 id="org8686936">Functor Laws</h2>
+<div class="outline-text-2" id="text-org8686936">
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="org8ff3c0d"></h3>
+<h3 id="org9ef160a"></h3>
 <p>
 Not just any type class instance will suffice!<br />
 </p>
@@ -694,7 +694,7 @@ For example, <code>Functor</code> instances must satisfy two laws.<br />
 
 </section>
 <section id="slide-sec-">
-<h3 id="org84c1ac8">Functor Law 1: Identity Preservation</h3>
+<h3 id="org32d53c0">Functor Law 1: Identity Preservation</h3>
 <div class="org-src-container">
 
 <pre  class="fragment (appear)"><code trim><span style="color: #fce94f;">fmap</span> id <span style="color: #fcaf3e;">=</span> id
@@ -709,7 +709,7 @@ mapping id over a functorial value must return the functorial value unchanged.<b
 
 </section>
 <section id="slide-sec-">
-<h3 id="orgbe7c0d6">Functor Law 2: Composition Preservation</h3>
+<h3 id="orgf3315e1">Functor Law 2: Composition Preservation</h3>
 <div class="org-src-container">
 
 <pre  class="fragment (appear)"><code trim><span style="color: #fce94f;">fmap</span> (f <span style="color: #fcaf3e;">.</span> g) <span style="color: #fcaf3e;">=</span> fmap f <span style="color: #fcaf3e;">.</span> fmap g
@@ -726,12 +726,12 @@ it should not matter whether we map a composed function or first map one functio
 </section>
 <section>
 <section id="slide-sec-">
-<h2 id="org38735f8">So What Is It Good For?</h2>
-<div class="outline-text-2" id="text-org38735f8">
+<h2 id="org084afca">So What Is It Good For?</h2>
+<div class="outline-text-2" id="text-org084afca">
 </div>
 </section>
 <section id="slide-sec-">
-<h3 id="orgab4ea4c"></h3>
+<h3 id="org21f3737"></h3>
 <p>
 Two reasons.  First:<br />
 </p>
@@ -744,7 +744,7 @@ The availability of the fmap method relieves us from having to recall, read, and
 
 </section>
 <section id="slide-sec-">
-<h3 id="org39fa573"></h3>
+<h3 id="org3a8a1cd"></h3>
 <p>
 And second:<br />
 </p>
@@ -754,6 +754,12 @@ Using the type class system, we can write fmap-based algorithms which work out o
 &#x2013; <a href="https://en.wikibooks.org/wiki/Haskell/The_Functor_class#What_did_we_gain?">Wikibooks</a><br />
 </p>
 </blockquote>
+
+</section>
+</section>
+<section>
+<section id="slide-sec-">
+<h2 id="orgf31f13b">Thank You</h2>
 </section>
 </section>
 </div>
