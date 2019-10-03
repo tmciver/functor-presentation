@@ -13,7 +13,7 @@
 - Some come with laws that must be obeyed.
 
 ** Example: Show
-The ~Show~ type class in Haskell is define like so:
+The ~Show~ type class in Haskell is defined like so:
 #+begin_src haskell
 class Show a where
   show :: a -> String
@@ -37,6 +37,12 @@ instance Show Direction where
   show Right = "Turning right"
 #+end_src
 #+end_group
+
+** 
+Some things to note here:
+#+ATTR_REVEAL: :frag (appear)
+- Instances are defined separately from the data types that they are for.
+- You can define more than one instance for a data type (though Haskell demands that only one is in scope at compile time).
 
 * Iteration Over Lists, Arrays, Vectors, etc.
 
