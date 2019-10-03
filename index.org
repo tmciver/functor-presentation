@@ -432,3 +432,19 @@ fmap (f . g) = fmap f . fmap g
 it should not matter whether we map a composed function or first map one function and then the other
 -- [[https://en.wikibooks.org/wiki/Haskell/The_Functor_class#The_functor_laws][Wikibooks]]
 #+end_quote
+
+* So What Is It Good For?
+
+** 
+Two reasons.  First:
+#+begin_quote
+The availability of the fmap method relieves us from having to recall, read, and write a plethora of differently named mapping methods (maybeMap, treeMap, weirdMap, ad infinitum). As a consequence, code becomes both cleaner and easier to understand. On spotting a use of fmap, we instantly have a general idea of what is going on.
+-- [[https://en.wikibooks.org/wiki/Haskell/The_Functor_class#What_did_we_gain?][Wikibooks]]
+#+end_quote
+
+** 
+And second:
+#+begin_quote
+Using the type class system, we can write fmap-based algorithms which work out of the box with any functor - be it [], Maybe, Tree or whichever you need. Indeed, a number of useful classes in the core libraries inherit from Functor.
+-- [[https://en.wikibooks.org/wiki/Haskell/The_Functor_class#What_did_we_gain?][Wikibooks]]
+#+end_quote
