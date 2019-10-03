@@ -280,7 +280,7 @@ And here's a function to uppercase a ~Maybe String~:
 #+begin_src haskell :session maybe
 uppercaseMaybeString :: Maybe String -> Maybe String
 uppercaseMaybeString maybeString = case maybeString of
-  Just s -> Just (toUpper s)
+  Just s -> Just ((map toUpper) s)
   Nothing -> Nothing
 #+end_src
 
@@ -324,7 +324,7 @@ incrementMaybeInt maybeInt
 #+begin_src haskell
 uppercaseMaybeString :: Maybe String -> Maybe String
 uppercaseMaybeString maybeString = case maybeString of
-  Just s -> Just (toUpper s)
+  Just s -> Just (map toUpper s)
   Nothing -> Nothing
 #+end_src
 
