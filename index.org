@@ -12,6 +12,32 @@
 - Define behavior
 - Some come with laws that must be obeyed.
 
+** Example: Show
+The ~Show~ type class in Haskell is define like so:
+#+begin_src haskell
+class Show a where
+  show :: a -> String
+#+end_src
+
+#+ATTR_REVEAL: :frag (appear)
+#+begin_group
+For a data type like
+#+begin_src haskell
+data Direction = Left
+               | Right
+#+end_src
+#+end_group
+
+#+ATTR_REVEAL: :frag (appear)
+#+begin_group
+We might create an instance of the ~Show~ type class like so:
+#+begin_src haskell
+instance Show Direction where
+  show Left = "Turning left"
+  show Right = "Turning right"
+#+end_src
+#+end_group
+
 * Iteration Over Lists, Arrays, Vectors, etc.
 
 ** One of the Most Common Operations in Programming
