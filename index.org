@@ -1,4 +1,4 @@
-#+TITLE: Functors
+#+TITLE: Type Classes: Functor
 #+OPTIONS: toc:0, num:nil, \n:t
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@3.8.0
 #+REVEAL_THEME: moon
