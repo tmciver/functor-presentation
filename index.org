@@ -382,6 +382,26 @@ Here we us ~f~ to stand in for the above type constructors.
 applyFunction :: f a -> (a -> b) -> f b
 #+end_src
 
+** 
+In Haskell this function is called ~fmap~ and is embodied by the ~Functor~ type class.
+#+begin_src haskell
+class Functor f where
+  fmap :: (a -> b) -> f a -> f b
+#+end_src
+
+** 
+In Haskell data types are said to *have* instances of a given type class.
+#+ATTR_REVEAL: :frag (appear)
+One can create instances of type classes for any type at any time.
+#+ATTR_REVEAL: :frag (appear)
+For example, here's the ~Functor~ instance for ~Maybe~:
+#+ATTR_REVEAL: :frag (appear)
+#+begin_src haskell
+instance Functor Maybe where
+  fmap f (Just x) = Just (f x)
+  fmap _ Nothing = Nothing
+#+end_src
+
 * Functor Laws
 
 * Notes
