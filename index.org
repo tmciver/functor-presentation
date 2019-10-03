@@ -3,8 +3,14 @@
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@3.8.0
 #+REVEAL_THEME: moon
 
-* APIs, Interfaces, Abstraction
-- Talk about how much of programming is coding to an interface as a lead-in to Functor being a high-level API.
+* Introduction to Type Classes
+
+** What's a Type Class?
+#+ATTR_REVEAL: :frag (appear)
+- It's similar to an interface in OO languages - except better!
+- They allow a way of implementing ad-hoc polymorphism (i.e., function overloading)
+- Define behavior
+- Some come with laws that must be obeyed.
 
 * Iteration Over Lists, Arrays, Vectors, etc.
 
